@@ -84,27 +84,34 @@ const renderUser=(doc)=>{
 
 }
 
-//show data on console
-db.collection('users').get().then(querySnapshot=>{
-    querySnapshot.forEach(doc=>{
-        // console.log(doc.data());
-        renderUser(doc);
+//render user
+// db.collection('users').get().then(querySnapshot=>{
+//     querySnapshot.forEach(doc=>{
+//         // console.log(doc.data());
+//         renderUser(doc);
 
-    })
+//     })
 
-});
+// });
 
 //realtime listerner
 db.collection('users').onSnapshot(snapshot=>{
     snapshot.docChanges().forEach(change=>{
         console.log(change.type)
-        if(change.type==='modified'){
+        if(change.type==='added'){
             renderUser(change.doc);
         }
-        if(change.type==='remove'){
-            let tr=document.querySelector(`[data-id='${change.doc.id}]`);
+        if(change.type==='removed'){
+            let tr=document.querySelector(`[data-id='${change.doc.id}']`);
             let tbody=tr.parentElement;
             tableUsers.removeChild(tbody);
+        }
+        if(change.type==='modified'){
+            let tr=document.querySelector(`[data-id='${change.doc.id}']`);
+            let tbody=tr.parentElement;
+            tableUsers.removeChild(tbody);
+            renderUser(change.doc)
+            
         }
     })
 
@@ -121,10 +128,11 @@ addModalForm.addEventListener('submit',e =>{
         email:addModalForm.Email.value,
         phone:addModalForm.phone.value
     })
+    addModel.remove('modal-show');
 
 })
 
-//click submit editfullName
+//click submit edit to firebase
 editModalForm.addEventListener('submit',e=>{
     e.preventDefault();
     db.collection('users').doc(id).update({
