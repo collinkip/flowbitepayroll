@@ -1,14 +1,17 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;500&display=swap');
 :root{
     --primary-colour:rgb(113, 115, 184);
     --secondary-colour:rgb(255, 165, 0);
+    --font:'Poppins', sans-serif;
 }
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;500&display=swap');
 *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 body{
+    margin-top: 7rem;
     font-family: 'Poppins', sans-serif;
 }
 .container{
@@ -28,34 +31,35 @@ header h3{
     color: rgb(255, 255, 255);
 }
 .table-wrapper{
-    width: 90%;
-    margin: 2rem auto;
+    width: 100%;
+    margin: 8rem auto;
 }
 .table-users th,.table-users td{
 
-
-    text-align: left;
-    border-top: 1px solid #ddd;
-    border-bottom: 1px solid #ddd;
-    padding: 0.5rem;
+    border: 2px solid rgb(224, 213, 213);
+    padding: 0.2rem;
+    border-radius: 10px;
 }
 .table-users th{
-    background: #fafafa;
-    padding: 1rem auto;
+    background: #cabbbb;
 }
 .btn{
     background: transparent;
     width: 4rem;
     height: 2rem;
-    border-radius: 1rem;
+    border: violet;
+    border-radius: 2rem;
     cursor: pointer;
     outline: none;
+    font-family: var(--font);
     transition: all 0.5s ease;
 }
 
 .btn-edit{
     color: var(--primary-colour);
-    border: 1px solid --primary-colour;
+    font-weight: bold;
+    font-family: var(--font);
+    border: 2px solid black;
 }
 .btn-edit:hover{
     background: var(--primary-colour);
@@ -64,7 +68,9 @@ header h3{
 
 .btn-delete{
     color: var(--secondary-colour);
-    border: 1px solid --secondary-colour;
+    font-weight: bold;
+    font-family: var(--font);
+    border: 2px solid black;
 }
 .btn-delete:hover{
     background: var(--secondary-colour);
@@ -78,8 +84,11 @@ header h3{
 .btn-add{
     width: 5rem;
     margin: 2rem auto;
+    font-weight: bold;
+    font-family: var(--font);
     background: var(--primary-colour);
     color: white;
+    border:2px solid black;
 }
 .btn-add:hover{
     width: 5rem;
@@ -105,18 +114,20 @@ header h3{
 
 .modal-show{
     display: flex;
+    
 }
 .model{
     position: relative;
     background: white;
+    backdrop-filter: blur(10px);
     text-align: center;
     width: 25rem;
     margin: 5rem auto;
     animation-name: animatetop;
     animation-duration: 0.3s;
-    -webkit-box-shadow: 0px 4px  22px -6px rgba(0,0,0,0.75);
-    -moz-box-shadow:0px 4px  22px -6px rgba(0,0,0,0.75) ;
-    box-shadow: 0px 4px  22px -6px rgba(0,0,0,0.75);
+    -webkit-box-shadow: 0px 4px  22px -6px rgb(0, 0, 0);
+    -moz-box-shadow:0px 4px  22px -6px rgb(0, 0, 0) ;
+    box-shadow: 0px 4px  22px -6px rgb(26, 22, 22);
 }
 .model-header{
     margin-bottom: 1rem;

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="login.css">
+</head>
+<body>
+    <div class="container" id="login-box">
+        <div class="left">
+        <div class="input">
+            <h3>LOGIN</h3>
+            <input type="email" id="email" name="email" placeholder="Email">
+            <input type="password" id="password" name="password" placeholder="password">
+            <h4>dont have an account <a href="#">click here</a></h4>
+            <button>Login</button>
+        </div>
+    </div>
+    </div>
+
+    <script src="https://www.gstatic.com/firebasejs/7.21.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.21.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.21.0/firebase-firestore.js"></script>
+    <script>
+     
+        // TODO: Add SDKs for Firebase products that you want to use
+        // https://firebase.google.com/docs/web/setup#available-libraries
+      
+        // Your web app's Firebase configuration
+        // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+        const firebaseConfig = {
+          apiKey: "AIzaSyBTz_MUV5lBa1NFRAwsXivL6FrVHIgXm8A",
+          authDomain: "flowbite-8d6ae.firebaseapp.com",
+          databaseURL: "https://flowbite-8d6ae-default-rtdb.firebaseio.com",
+          projectId: "flowbite-8d6ae",
+          storageBucket: "flowbite-8d6ae.appspot.com",
+          messagingSenderId: "109135851725",
+          appId: "1:109135851725:web:70e7dee9963296287e7984",
+          measurementId: "G-ZLB3BM8NC1"
+        };
+      
+        // Initialize Firebase
+        firebase.initialiappzeApp(firebaseConfig);
+        const db=firebase.firestore();
+        const auth=firebase.auth();
+      </script>
+      <script src="index.js"></script>
+</body>
+</html>

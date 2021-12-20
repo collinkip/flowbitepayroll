@@ -19,13 +19,13 @@ btnAdd.addEventListener('click',()=>{
 //onclick outside window
 window.addEventListener('click',e=>{
     if(e.target===addModel){
-        addModel.remove('modal-show');
+        addModel.classList.remove('modal-show');
     }
     if(e.target===editModel){
-        editModel.remove('modal-show');
+        editModel.classList.remove('modal-show');
     }
 });
-const tableUsers=document.querySelector('.table-users')
+const tableUsers=document.querySelector('.table-users');
 
 
 
@@ -78,7 +78,7 @@ const renderUser=(doc)=>{
         db.collection('users').doc(`${doc.id}`).delete().then(()=>{
             console.log('Record deleted');
         }).catch(err=>{
-            console.log('Error removing document')
+            console.log('Error removing document');
         });
     });
 
@@ -110,7 +110,7 @@ db.collection('users').onSnapshot(snapshot=>{
             let tr=document.querySelector(`[data-id='${change.doc.id}']`);
             let tbody=tr.parentElement;
             tableUsers.removeChild(tbody);
-            renderUser(change.doc)
+            renderUser(change.doc);
             
         }
     })
@@ -121,14 +121,14 @@ db.collection('users').onSnapshot(snapshot=>{
 //click submit to  add model
 addModalForm.addEventListener('submit',e =>{
     e.preventDefault();
-    console.log(addModalForm.fullname.value)
+    console.log(addModalForm.fullname.value);
     db.collection('users').add({
         fullName:addModalForm.fullname.value,
         department:addModalForm.department.value,
         email:addModalForm.Email.value,
         phone:addModalForm.phone.value
     })
-    addModel.remove('modal-show');
+    addModel.remove('.modal-show');
 
 })
 
@@ -143,5 +143,5 @@ editModalForm.addEventListener('submit',e=>{
 
 
     });
-    editModel.remove('modal-show');
+    editModel.remove('.modal-show');
 });
