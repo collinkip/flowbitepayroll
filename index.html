@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crudd with f1restore</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h3>List member</h3>
+        </header>
+        <div class="table_wrapper">
+            <table class="table-users">
+                <tr>
+                    <th>Full name</th>
+                    <th> Department</th>
+                    <th>Email</th>
+                    <th>phone</th>
+                    <th>Action</th>
+                </tr>
+                <tr>
+            
+            </table>
+            <button class="btn btn-add">Add user</button>
+        </div>
+
+        <div class="add-model model-wrapper">
+            <div class="model">
+                <div class="model-header"><h3>Add new user</h3></div>
+                <div class="model-body">
+                    <form class="form" autocomplete="off">
+                        <input type="text" name="fullname" placeholder="full Name" required>
+                        <input type="text" name="department" placeholder="department" required>
+                        <input type="email" name="Email" placeholder="email" required>
+                        <input type="number" name="phone" placeholder="phone" required>
+                        <button class="btn btn-model">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://www.gstatic.com/firebasejs/7.21.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.21.0/firebase-firestore.js"></script>
+    <script>
+     
+        // TODO: Add SDKs for Firebase products that you want to use
+        // https://firebase.google.com/docs/web/setup#available-libraries
+      
+        // Your web app's Firebase configuration
+        // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+        const firebaseConfig = {
+          apiKey: "AIzaSyBTz_MUV5lBa1NFRAwsXivL6FrVHIgXm8A",
+          authDomain: "flowbite-8d6ae.firebaseapp.com",
+          databaseURL: "https://flowbite-8d6ae-default-rtdb.firebaseio.com",
+          projectId: "flowbite-8d6ae",
+          storageBucket: "flowbite-8d6ae.appspot.com",
+          messagingSenderId: "109135851725",
+          appId: "1:109135851725:web:70e7dee9963296287e7984",
+          measurementId: "G-ZLB3BM8NC1"
+        };
+      
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        const db=firebase.firestore();
+      </script>
+    <script src="app.js"></script>
+</body>
+
+</html>
