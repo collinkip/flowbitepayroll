@@ -17,6 +17,8 @@ window.addEventListener('click',e=>{
 });
 const tableUsers=document.querySelector('.table-users')
 //render data on web
+
+
 const renderUser=(doc)=>{
     const tr=`
     <tr>
@@ -29,9 +31,18 @@ const renderUser=(doc)=>{
             <button class="btn btn-delete">Delete</button>
 
         </td>
-</tr>
+    </tr>
     `;
+
+    console.log(doc.id);
     tableUsers.insertAdjacentHTML('beforeend',tr);
+
+
+    //click delete
+    const btnDelete=document.querySelector('.btn-delete');
+    btnDelete.addEventListener('click',()=>{
+        console.log('user deleted')
+    })
 
 }
 
