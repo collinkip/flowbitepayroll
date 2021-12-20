@@ -1,27 +1,43 @@
 const modelWrapper=document.querySelector('.model-wrapper');
 const addModel=document.querySelector('.add-model');
-const btnAdd= document.querySelector('.btn-add');
 const addModalForm=document.querySelector('.add-model form');
 
+
+const editModel=document.querySelector('.edit-model');
+const editModalForm=document.querySelector('.edit-model form');
+
+const btnAdd= document.querySelector('.btn-add');
+
+
+let id;
 //show add diaolog box
 btnAdd.addEventListener('click',()=>{
     addModel.classList.add('modal-show');
+    
 });
 
 //onclick outside window
 window.addEventListener('click',e=>{
     if(e.target===addModel){
         addModel.remove('modal-show');
-
+    }
+    if(e.target===editModel){
+        editModel.remove('modal-show');
     }
 });
 const tableUsers=document.querySelector('.table-users')
+
+
+
+
+
+
 //render data on web
 
 
 const renderUser=(doc)=>{
     const tr=`
-    <tr>
+    <tr data-id ='${doc.id}'>
         <td>${doc.data().fullName}</td>
         <td>${doc.data().department}</td>
         <td>${doc.data().email}</td>
@@ -38,23 +54,62 @@ const renderUser=(doc)=>{
     tableUsers.insertAdjacentHTML('beforeend',tr);
 
 
+
+
+
+    //render edit dilog box
+    const btnEddit=document.querySelector(`[data-id='${doc.id}'] .btn-edit`);
+    btnEddit.addEventListener('click',()=>{
+        editModel.classList.add('modal-show');
+
+        id=doc.id;
+        editModalForm.fullname.value=doc.data().fullName;
+        editModalForm.department.value=doc.data().department;
+        editModalForm.Email.value=doc.data().email;
+        editModalForm.phone.value=doc.data().phone;
+        
+    });
+    
+    
+
     //click delete
-    const btnDelete=document.querySelector('.btn-delete');
+    const btnDelete=document.querySelector(`[data-id='${doc.id}'] .btn-delete`);
     btnDelete.addEventListener('click',()=>{
-        console.log('user deleted')
-    })
+        db.collection('users').doc(`${doc.id}`).delete().then(()=>{
+            console.log('Record deleted');
+        }).catch(err=>{
+            console.log('Error removing document')
+        });
+    });
 
 }
 
 //show data on console
 db.collection('users').get().then(querySnapshot=>{
     querySnapshot.forEach(doc=>{
-        console.log(doc.data());
+        // console.log(doc.data());
         renderUser(doc);
 
     })
 
 });
+
+//realtime listerner
+db.collection('users').onSnapshot(snapshot=>{
+    snapshot.docChanges().forEach(change=>{
+        console.log(change.type)
+        if(change.type==='modified'){
+            renderUser(change.doc);
+        }
+        if(change.type==='remove'){
+            let tr=document.querySelector(`[data-id='${change.doc.id}]`);
+            let tbody=tr.parentElement;
+            tableUsers.removeChild(tbody);
+        }
+    })
+
+})
+
 
 //click submit to  add model
 addModalForm.addEventListener('submit',e =>{
@@ -68,3 +123,17 @@ addModalForm.addEventListener('submit',e =>{
     })
 
 })
+
+//click submit editfullName
+editModalForm.addEventListener('submit',e=>{
+    e.preventDefault();
+    db.collection('users').doc(id).update({
+        fullName:editModalForm.fullname.value,
+        department:editModalForm.department.value,
+        email:editModalForm.Email.value,
+        phone:editModalForm.phone.value
+
+
+    });
+    editModel.remove('modal-show');
+});

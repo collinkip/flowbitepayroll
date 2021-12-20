@@ -12,7 +12,7 @@ body{
     font-family: 'Poppins', sans-serif;
 }
 .container{
-    max-width: 70rem;
+    max-width: 50rem;
     margin:auto;
     -webkit-box-shadow: 0px 4px  22px -6px rgba(0,0,0,0.75);
     -moz-box-shadow:0px 4px  22px -6px rgba(0,0,0,0.75) ;
