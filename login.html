@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div claLss="header">
+            <h3>Login</h3>
+        </div>
+        <div class="form">
+                <input type="email" id="email" placeholder="email"/>
+                <input type="password" id="password" placeholder="password"/>
+                <button class="login">Login</button>
+        </div>
+    </div>
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js";
+        // TODO: Add SDKs for Firebase products that you want to use
+        // https://firebase.google.com/docs/web/setup#available-libraries
+      
+        // Your web app's Firebase configuration
+        const firebaseConfig = {
+          apiKey: "AIzaSyApT0AnR0G3zZbpupuW8Clqgzt4eiUX6DE",
+          authDomain: "mywepapp-ad831.firebaseapp.com",
+          projectId: "mywepapp-ad831",
+          storageBucket: "mywepapp-ad831.appspot.com",
+          messagingSenderId: "715348405285",
+          appId: "1:715348405285:web:6f14e9eccd71cfc4d8e3cc"
+        };
+      
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+      </script>
+      <script src="script.js"></script>
+</body>
+</html>
